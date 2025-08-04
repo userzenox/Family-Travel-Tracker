@@ -1,0 +1,39 @@
+# Node modules (dependencies)
+node_modules/
+
+# Environment variables (secrets)
+.env
+
+# Build directories
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS-specific files
+.DS_Store       # macOS
+Thumbs.db       # Windows
+
+# Env-specific
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+coverage/
+
+# Optional: lock files (if you're not using them)
+# package-lock.json
+# yarn.lock
