@@ -16,9 +16,16 @@ const db = new pg.Client({
   ssl: { rejectUnauthorized: false }  // required on Render PostgreSQL
 });
 
-db.connect()
-  .then(() => console.log("Connected to DB"))
-  .catch(err => console.error("Connection error", err));
+
+(async () => {
+  try {
+    await db.connect();
+    console.log("Connected to DB");
+  } catch (err) {
+    console.error("Connection error", err);
+  }
+})();
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));

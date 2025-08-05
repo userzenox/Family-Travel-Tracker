@@ -4,6 +4,9 @@ node_modules/
 # Environment variables (secrets)
 .env
 
+index2.js
+
+
 # Build directories
 dist/
 build/
