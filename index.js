@@ -1,29 +1,28 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
-import dotenv from 'dotenv';
-dotenv.config();
-
-
-const pass = process.env.DB_PASSWORD;
-const data = process.env.DB_DATABASE;
+// Use connectionString from environment
+const connectionString = process.env.DATABASE_URL;
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: data,
-  password: pass,
-  port: 5432,
+  connectionString: connectionString,
+  ssl: { rejectUnauthorized: false }  // required on Render PostgreSQL
 });
 
-db.connect();
+db.connect()
+  .then(() => console.log("Connected to DB"))
+  .catch(err => console.error("Connection error", err));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
 
 let currentUserId = 3;
 let users = [];
